@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calci</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        user-select: none;
+        background: #5f5e5e;
+    }
+
+    .container {
+        margin-left: 1.8 em;
+        padding: 20px;
+        padding-right: 20px;
+        width: 450.5px;
+        border-radius: 8px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        box-shadow: 13px 13px 20px #8f9192,-13px -13px 20px #858383;
+
+    }
+
+    .content {
+        color: #fff;
+        width: 100%;
+        margin-top: 1.7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .row button {
+            width: 60px;
+            height: 30px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            margin: 5px;
+            border-radius: 4px;
+            transition: .1s;
+            box-shadow: 5px 5px 8px #00000020,-5px -5px 8px rgb(148, 146, 146);
+            appearance: none;
+            background-color: #000000;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: normal;
+            margin: 0;
+            min-height: 60px;
+            min-width: 0;
+            outline: none;
+            padding: 16px 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: 100%;
+            will-change: transform;
+            width: 60px;
+            height: 30px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            margin: 5px;
+            border-radius: 4px;
+            transition: .1s;
+            box-shadow: 5px 5px 8px #00000020,-5px -5px 8px rgb(148, 146, 146);
+    }
+
+
+
+    .display #screen {
+        margin-bottom: .5em;
+        width: 440.5px;
+        height: 70px;
+        font-size: 35px;
+        outline: none;
+        border: none;
+        text-align: right;
+        padding-right: .5em;
+        background: #f3f3f7;
+        border-radius: 6px;
+        box-shadow: inset 8px 8px 8px #9b9c9c,
+            inset -8px -8px 8px #9c9b9b;
+    }
+
+    #eval {
+        background: #33ccff;
+        color: #fff;
+        box-shadow: inset 5px 5px 8px #66d9ff,
+            inset -5px -5px 8px #00ace6;
+    }
+
+    #eval:hover {
+        box-shadow: inset 5px 5px 8px #00ace6,
+            inset -5px -5px 8px #00ace6;
+    }
+
+    #ac {
+        background: #eb5122;
+        color: rgb(248, 246, 245);
+    }
+
+    #ac:hover {
+        box-shadow: inset 5px 5px 8px #d84c22,
+            inset -5px -5px 8px #d35216;
+    }
+
+    #ce {
+        background: #ff3399;
+        color: #fff;
+    }
+
+    #ce:hover {
+        box-shadow: inset 5px 5px 8px #e60073,
+            inset -5px -5px 8px #ff3399;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+
+        <div class="btns">
+            <div class="row">
+                <button id="ce" onclick="backspc()">CE</button>
+                <button onclick="fact()">x!</button>
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+                <button class="btn">%</button>
+                <button id="ac" onclick="screen.value=''">AC</button>
+            </div>
+
+            <div class="row">
+                <button onclick="sin()">sin</button>
+                <button onclick="pi()">π</button>
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">÷</button>
+            </div>
+
+            <div class="row">
+                <button onclick="cos()">cos</button>
+                <button onclick="log()">log</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">×</button>
+            </div>
+
+            <div class="row">
+                <button onclick="tan()">tan</button>
+                <button onclick="sqrt()">√</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+            </div>
+
+            <div class="row">
+                <button onclick="e()">e</button>
+                <button onclick="pow()">x <span style="position: relative; bottom: .4em; right: .1em;">y</span>
+                </button>
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                <button class="btn">+</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var screen = document.querySelector('#screen');
+    var btn = document.querySelectorAll('.btn');
+
+    /*============ For getting the value of btn, Here we use for loop ============*/
+    for (item of btn) {
+        item.addEventListener('click', (e) => {
+            btntext = e.target.innerText;
+
+            if (btntext == '×') {
+                btntext = '*';
+            }
+
+            if (btntext == '÷') {
+                btntext = '/';
+            }
+            screen.value += btntext;
+        });
+    }
+
+    function sin() {
+        screen.value = Math.sin(screen.value);
+    }
+
+    function cos() {
+        screen.value = Math.cos(screen.value);
+    }
+
+    function tan() {
+        screen.value = Math.tan(screen.value);
+    }
+
+    function pow() {
+        screen.value = Math.pow(screen.value, 2);
+    }
+
+    function sqrt() {
+        screen.value = Math.sqrt(screen.value, 2);
+    }
+
+    function log() {
+        screen.value = Math.log(screen.value);
+    }
+
+    function pi() {
+        screen.value = 3.14159265359;
+    }
+
+    function e() {
+        screen.value = 2.71828182846;
+    }
+
+    function fact() {
+        var i, num, f;
+        f = 1
+        num = screen.value;
+        for (i = 1; i <= num; i++) {
+            f = f * i;
+        }
+
+        i = i - 1;
+
+        screen.value = f;
+    }
+
+    function backspc() {
+        screen.value = screen.value.substr(0, screen.value.length - 1);
+    }
+</script>
+
+</html>
